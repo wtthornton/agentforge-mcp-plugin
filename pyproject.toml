@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agentforge-mcp-plugin"
+version = "1.0.0"
+description = "Test rig for AgentForge MCP server validation — known vs unknown server names."
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.115", "pydantic>=2.0"]
+
+[project.entry-points."agentforge.plugins"]
+mcp-test = "agentforge_mcp_test"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agentforge_mcp_test"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"agentforge_mcp_test/plugin.json" = "agentforge_mcp_test/plugin.json"
+"agentforge_mcp_test/agents/known_mcp_agent/AGENT.md" = "agentforge_mcp_test/agents/known_mcp_agent/AGENT.md"
+"agentforge_mcp_test/agents/bad_mcp_agent/AGENT.md" = "agentforge_mcp_test/agents/bad_mcp_agent/AGENT.md"
+
+[dependency-groups]
+dev = ["pytest>=9.0", "httpx>=0.28"]

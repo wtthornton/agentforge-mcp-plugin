@@ -1,0 +1,22 @@
+{
+  "schema_version": "1",
+  "id": "mcp-test",
+  "display_name": "MCP Test",
+  "version": "1.0.0",
+  "namespace": "project.mcp-test",
+  "backend": {
+    "entry_point": "agentforge_mcp_test.plugin:register",
+    "routes_prefix": "/api/mcp-test",
+    "resource_providers": []
+  },
+  "agents": [
+    {"name": "known-mcp-agent", "path": "agentforge_mcp_test/agents/known_mcp_agent"},
+    {"name": "bad-mcp-agent", "path": "agentforge_mcp_test/agents/bad_mcp_agent"}
+  ],
+  "frontend": {
+    "remote_url": "",
+    "nav_label": "MCP Test",
+    "nav_icon": "Server",
+    "route": "/mcp-test"
+  }
+}
